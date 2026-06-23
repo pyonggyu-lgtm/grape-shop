@@ -88,7 +88,10 @@ export default function HomePage() {
           <p className='text-xs text-green-700 font-semibold uppercase tracking-widest mb-1'>💳 입금 계좌</p>
           <p className='text-lg font-bold text-green-900'>우체국 010017-02-618695 <span className='text-sm font-normal text-gray-500'>(예금주: 박용규)</span></p>
         </div>
-        <p className='text-center text-xs text-gray-400 pb-4'>주문 후 위 계좌로 입금해 주시면 확인 후 발송해 드립니다.</p>
+        <p className='text-center text-xs text-gray-400 pb-3'>주문 후 위 계좌로 입금해 주시면 확인 후 발송해 드립니다.</p>
+        <p className='text-center pb-4'>
+          <a href='/admin' className='text-xs text-gray-300 hover:text-gray-500 transition-colors'>관리자</a>
+        </p>
       </footer>
 
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
