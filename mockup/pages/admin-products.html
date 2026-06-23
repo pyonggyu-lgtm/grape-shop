@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>상품 관리 | 포도농장 관리자</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body data-page="admin-products">
+
+  <div class="admin-layout">
+
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__logo">🍇 포도농장 관리</div>
+      <nav>
+        <a class="admin-nav__item" href="admin-orders.html">📋 주문 관리</a>
+        <a class="admin-nav__item is-active" href="admin-products.html">🍇 상품 관리</a>
+        <a class="admin-nav__item" href="admin-login.html">🚪 로그아웃</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+
+      <div class="admin-header">
+        <h1 class="admin-title">상품 관리</h1>
+        <button class="btn btn--primary btn--sm" onclick="alert('상품 추가 모달 (Phase 4 구현 예정)')">
+          + 상품 추가
+        </button>
+      </div>
+
+      <div class="admin-table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>상품명</th>
+              <th>품종</th>
+              <th>옵션 (가격)</th>
+              <th>재고</th>
+              <th>판매 상태</th>
+              <th>액션</th>
+            </tr>
+          </thead>
+          <tbody id="admin-product-tbody">
+            <!-- JS 렌더링 -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="../scripts/app.js"></script>
+  <script>
+    async function renderAdminProducts() {
+      const res = await fetch('../data/products.json');
+      const json = await res.json();
+      const products = json.data;
+      const tbody = document.getElementById('admin-product-tbody');
+      tbody.innerHTML = products.map(p => `
+        <tr>
+          <td style="font-weight:600">${p.name}</td>
+          <td>${p.variety}</td>
+          <td style="font-size:12px">
+            ${p.options.map(o => `${o.label}: ${o.price.toLocaleString('ko-KR')}원`).join('<br/>')}
+          </td>
+          <td>${p.stock}kg</td>
+          <td>
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer">
+              <input type="checkbox" ${p.isAvailable ? 'checked' : ''} onchange="toggleProduct('${p._id}', this.checked)" />
+              <span style="font-size:13px">${p.isAvailable ? '판매중' : '숨김'}</span>
+            </label>
+          </td>
+          <td style="display:flex;gap:6px">
+            <button class="btn btn--ghost btn--sm" onclick="alert('수정 모달 (Phase 4 구현 예정)')">수정</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function toggleProduct(id, isAvailable) {
+      console.log(`[Mock] toggleProduct: ${id} → ${isAvailable}`);
+      alert(`판매 상태 변경 (Phase 4 bkend.ai API 연동 예정)`);
+    }
+
+    renderAdminProducts();
+  </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>주문 완료 | 포도농장</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body data-page="complete">
+
+  <header class="header" data-component="Header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">
+        <span class="header__logo-icon">🍇</span>
+        <span>포도농장</span>
+      </a>
+    </div>
+  </header>
+
+  <main style="padding:64px 0">
+    <div class="container">
+
+      <!-- [data-component="OrderComplete"] -->
+      <div class="order-complete" data-component="OrderComplete">
+        <div class="order-complete__icon">✅</div>
+        <h1 class="order-complete__title">주문이 완료되었습니다!</h1>
+        <p style="color:var(--color-text-muted);margin-bottom:16px">
+          신선한 포도를 빠르게 보내드리겠습니다 🍇
+        </p>
+        <div class="order-complete__number" id="complete-order-number">ORD-20260622-0001</div>
+
+        <table class="order-info-table">
+          <tr>
+            <td>주문 상태</td>
+            <td><span class="badge badge--paid">결제 완료</span></td>
+          </tr>
+          <tr>
+            <td>결제 수단</td>
+            <td>신용카드</td>
+          </tr>
+          <tr>
+            <td>배송 예정</td>
+            <td>영업일 기준 2-3일 이내</td>
+          </tr>
+          <tr>
+            <td>배송지</td>
+            <td>경기도 성남시 분당구 판교로 123</td>
+          </tr>
+          <tr>
+            <td>결제 금액</td>
+            <td style="font-weight:700;color:var(--color-primary)">56,000원</td>
+          </tr>
+        </table>
+
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="index.html" class="btn btn--primary btn--lg">계속 쇼핑하기</a>
+          <button class="btn btn--outline btn--lg" onclick="alert('주문 조회 기능은 Phase 4에서 구현 예정입니다')">
+            주문 조회
+          </button>
+        </div>
+
+        <div style="margin-top:32px;padding:20px;background:#f9fafb;border-radius:12px;font-size:13px;color:var(--color-text-muted);text-align:left;line-height:2">
+          <strong style="color:var(--color-text);display:block;margin-bottom:8px">📦 배송 안내</strong>
+          <div>• 주문 확인 후 당일 또는 다음날 발송됩니다</div>
+          <div>• 택배사: CJ대한통운 (운송장 번호는 발송 후 문자 발송)</div>
+          <div>• 문의: 041-123-4567 / farm@grape.example.com</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer" style="margin-top:0">
+    <div class="container">
+      <div class="footer__bottom">© 2026 포도농장. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="../scripts/app.js"></script>
+</body>
+</html>

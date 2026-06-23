@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>주문서 작성 | 포도농장</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body data-page="order">
+
+  <!-- Header -->
+  <header class="header" data-component="Header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">
+        <span class="header__logo-icon">🍇</span>
+        <span>포도농장</span>
+      </a>
+      <nav style="font-size:14px;color:var(--color-text-muted)">
+        <a href="index.html" style="color:inherit">상품</a>
+        <span style="margin:0 8px">/</span>
+        <strong style="color:var(--color-primary)">주문</strong>
+      </nav>
+    </div>
+  </header>
+
+  <main style="padding:48px 0 80px">
+    <div class="container">
+      <h1 style="font-size:28px;font-weight:800;margin-bottom:32px">주문서 작성</h1>
+
+      <div class="order-layout">
+
+        <!-- ====================================================
+          Left: Order Form  [data-component="OrderForm"]
+        ===================================================== -->
+        <div>
+          <form id="order-form" data-component="OrderForm">
+
+            <!-- 주문자 정보 -->
+            <div class="order-card">
+              <h2 class="order-card__title">주문자 정보</h2>
+
+              <div class="form-group">
+                <label class="form-label">이름 <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="홍길동" required />
+              </div>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                <div class="form-group">
+                  <label class="form-label">연락처 <span class="required">*</span></label>
+                  <input type="tel" class="form-input" placeholder="010-0000-0000" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">이메일</label>
+                  <input type="email" class="form-input" placeholder="example@email.com" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 배송지 정보 -->
+            <div class="order-card">
+              <h2 class="order-card__title">배송지 정보</h2>
+
+              <div class="form-group">
+                <label class="form-label">우편번호 <span class="required">*</span></label>
+                <div class="address-row">
+                  <input type="text" class="form-input address-input" placeholder="우편번호" readonly id="postal-input" required />
+                  <button type="button" class="btn btn--outline" onclick="handlePostcode()">주소 검색</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">도로명 주소 <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="주소 검색 후 자동 입력" readonly id="address-input" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">상세 주소</label>
+                <input type="text" class="form-input" placeholder="아파트 동/호수, 상세 주소 입력" />
+              </div>
+            </div>
+
+            <!-- 배송 옵션 -->
+            <div class="order-card">
+              <h2 class="order-card__title">배송 옵션</h2>
+
+              <div class="form-group">
+                <label class="form-label">배송 희망일</label>
+                <input type="date" class="form-input" id="delivery-date"
+                  min="2026-06-23"
+                  style="cursor:pointer" />
+                <p style="font-size:12px;color:var(--color-text-muted);margin-top:6px">
+                  ⚠️ 주문 완료 후 2-3일 내 배송됩니다. 희망일은 참고용입니다.
+                </p>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">배송 메모</label>
+                <textarea class="form-textarea" placeholder="배송 시 요청 사항을 입력해주세요 (문 앞 배송, 경비실 맡김 등)"></textarea>
+              </div>
+            </div>
+
+            <!-- 결제 방법 -->
+            <div class="order-card">
+              <h2 class="order-card__title">결제 수단</h2>
+              <div style="display:flex;gap:12px;flex-wrap:wrap">
+                <label style="display:flex;align-items:center;gap:8px;padding:12px 20px;border:2px solid var(--color-primary);border-radius:12px;cursor:pointer;font-weight:600;color:var(--color-primary)">
+                  <input type="radio" name="payment" value="card" checked /> 신용/체크카드
+                </label>
+                <label style="display:flex;align-items:center;gap:8px;padding:12px 20px;border:2px solid var(--color-border);border-radius:12px;cursor:pointer;font-weight:600;color:var(--color-text-muted)">
+                  <input type="radio" name="payment" value="transfer" /> 계좌이체
+                </label>
+                <label style="display:flex;align-items:center;gap:8px;padding:12px 20px;border:2px solid var(--color-border);border-radius:12px;cursor:pointer;font-weight:600;color:var(--color-text-muted)">
+                  <input type="radio" name="payment" value="phone" /> 휴대폰결제
+                </label>
+              </div>
+              <p style="margin-top:12px;font-size:13px;color:var(--color-text-muted)">
+                🔒 토스페이먼츠 결제창이 별도로 열립니다 (Phase 4에서 연동 예정)
+              </p>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full btn--lg" style="margin-top:8px">
+              결제하기 →
+            </button>
+
+          </form>
+        </div>
+
+        <!-- ====================================================
+          Right: Order Summary
+        ===================================================== -->
+        <div>
+          <div class="order-summary">
+            <div class="order-summary__header">주문 상품</div>
+            <div class="order-summary__body" id="order-summary-items">
+              <!-- JS 렌더링 -->
+              <div class="order-summary__item">
+                <div>
+                  <div class="order-summary__item-name">샤인머스캣</div>
+                  <div class="order-summary__item-meta">2kg × 2</div>
+                </div>
+                <div class="order-summary__item-price">56,000원</div>
+              </div>
+            </div>
+            <div style="padding:0 24px">
+              <hr class="order-summary__divider" />
+              <div class="order-summary__total">
+                <span class="order-summary__total-label">결제 금액</span>
+                <span class="order-summary__total-amount" id="order-summary-total">56,000원</span>
+              </div>
+            </div>
+            <div class="order-summary__footer" style="margin-top:16px">
+              <div style="font-size:12px;color:var(--color-text-muted);line-height:1.8">
+                <div>✓ 무료배송 (3만원 이상)</div>
+                <div>✓ 당일 수확 신선 배송</div>
+                <div>✓ 품질 불만족 시 100% 환불</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="../scripts/app.js"></script>
+  <script>
+    // Postcode mock (Phase 4에서 카카오 우편번호 API 연동 예정)
+    function handlePostcode() {
+      document.getElementById('postal-input').value = '13494';
+      document.getElementById('address-input').value = '경기도 성남시 분당구 판교로 123';
+      alert('주소 검색 API (카카오 우편번호)\nPhase 4에서 실제 연동 예정입니다.');
+    }
+
+    // Set min delivery date
+    const dateInput = document.getElementById('delivery-date');
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 2);
+    dateInput.min = tomorrow.toISOString().split('T')[0];
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "level": "dynamic",
+  "project": "grape-shop",
+  "description": "포도 직거래 판매 쇼핑몰",
+  "currentPhase": 1,
+  "completedPhases": [],
+  "features": [
+    "상품 소개 페이지",
+    "장바구니",
+    "주문서 작성",
+    "토스페이먼츠 결제",
+    "관리자 주문 관리"
+  ],
+  "stack": {
+    "frontend": "Next.js + TypeScript + Tailwind CSS",
+    "backend": "bkend.ai",
+    "payment": "토스페이먼츠",
+    "stateManagement": "Zustand + TanStack Query",
+    "deployment": "Vercel"
+  },
+  "createdAt": "2026-06-22"
+}

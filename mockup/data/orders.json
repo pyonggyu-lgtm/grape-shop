@@ -1,0 +1,66 @@
+{
+  "data": [
+    {
+      "_id": "ord_001",
+      "orderNumber": "ORD-20260622-0001",
+      "customerName": "김민준",
+      "customerPhone": "010-1234-5678",
+      "customerEmail": "minjun@example.com",
+      "deliveryAddress": "경기도 성남시 분당구 판교로 123",
+      "deliveryDetailAddress": "101동 502호",
+      "postalCode": "13494",
+      "requestedDeliveryDate": "2026-06-25",
+      "deliveryNote": "문 앞에 놓아주세요",
+      "items": [
+        {
+          "productId": "prod_001",
+          "productName": "샤인머스캣",
+          "option": { "weight": 2, "price": 28000, "label": "2kg" },
+          "quantity": 2,
+          "subtotal": 56000
+        }
+      ],
+      "totalAmount": 56000,
+      "paymentMethod": "카드",
+      "paymentKey": "toss_pay_abc123",
+      "status": "paid"
+    },
+    {
+      "_id": "ord_002",
+      "orderNumber": "ORD-20260622-0002",
+      "customerName": "이서연",
+      "customerPhone": "010-9876-5432",
+      "customerEmail": "seoyeon@example.com",
+      "deliveryAddress": "서울특별시 강남구 테헤란로 456",
+      "deliveryDetailAddress": "5층",
+      "postalCode": "06234",
+      "requestedDeliveryDate": null,
+      "deliveryNote": "",
+      "items": [
+        {
+          "productId": "prod_002",
+          "productName": "거봉",
+          "option": { "weight": 4, "price": 34000, "label": "4kg" },
+          "quantity": 1,
+          "subtotal": 34000
+        },
+        {
+          "productId": "prod_003",
+          "productName": "캠벨얼리",
+          "option": { "weight": 2, "price": 12000, "label": "2kg" },
+          "quantity": 1,
+          "subtotal": 12000
+        }
+      ],
+      "totalAmount": 46000,
+      "paymentMethod": "카드",
+      "paymentKey": "toss_pay_def456",
+      "status": "preparing"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 20,
+    "total": 2
+  }
+}

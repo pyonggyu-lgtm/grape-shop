@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>포도농장 직거래 | 신선한 포도를 농장에서 바로</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body data-page="home">
+
+  <!-- ========================================================
+    Header  [data-component="Header"]
+  ========================================================= -->
+  <header class="header" data-component="Header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">
+        <span class="header__logo-icon">🍇</span>
+        <span>포도농장</span>
+      </a>
+      <div class="header__actions">
+        <button class="btn btn--icon cart-btn" id="cart-btn" aria-label="장바구니 열기">
+          🛒
+          <span class="cart-badge" id="cart-badge" style="display:none">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+    Hero Section  [data-component="Hero"]
+  ========================================================= -->
+  <section class="hero" data-component="Hero">
+    <div class="container hero__content">
+      <div class="hero__badge">🌿 2026년 햇포도 수확 시작</div>
+      <h1 class="hero__title">
+        농장에서 식탁까지<br />신선한 포도 직배송
+      </h1>
+      <p class="hero__subtitle">
+        충청남도 최고의 포도 농장에서 직접 재배한<br />
+        당일 수확 포도를 집 앞까지 빠르게 배송합니다
+      </p>
+      <button class="btn btn--outline btn--lg" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})"
+        style="border-color:rgba(255,255,255,0.8);color:#fff;background:rgba(255,255,255,0.1)">
+        지금 구매하기 →
+      </button>
+      <div class="hero__stats">
+        <div>
+          <div class="hero__stat-number">18°</div>
+          <div class="hero__stat-label">당도 (Brix)</div>
+        </div>
+        <div>
+          <div class="hero__stat-number">15년</div>
+          <div class="hero__stat-label">재배 경력</div>
+        </div>
+        <div>
+          <div class="hero__stat-number">4.9★</div>
+          <div class="hero__stat-label">고객 평점</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+    Product Section  [data-component="ProductGrid"]
+  ========================================================= -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">이번 시즌 판매 상품</h2>
+        <p class="section__desc">당일 수확한 신선한 포도를 산지 직송으로 보내드립니다</p>
+      </div>
+      <div class="product-grid" id="product-grid" data-component="ProductGrid">
+        <!-- JS로 렌더링 -->
+        <div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--color-text-muted)">
+          상품을 불러오는 중...
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+    Why Section (정적 섹션)
+  ========================================================= -->
+  <section class="section" style="background:#fff">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">왜 포도농장 직거래?</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
+        <div style="text-align:center;padding:32px 24px">
+          <div style="font-size:48px;margin-bottom:16px">🚚</div>
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:8px">당일 수확 · 당일 발송</h3>
+          <p style="color:var(--color-text-muted);font-size:14px;line-height:1.7">아침에 수확해 그날 바로 발송합니다. 유통과정을 최소화해 신선도를 극대화합니다.</p>
+        </div>
+        <div style="text-align:center;padding:32px 24px">
+          <div style="font-size:48px;margin-bottom:16px">🌿</div>
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:8px">무농약 재배</h3>
+          <p style="color:var(--color-text-muted);font-size:14px;line-height:1.7">친환경 농법으로 재배해 잔류 농약 걱정 없이 껍질째 드실 수 있습니다.</p>
+        </div>
+        <div style="text-align:center;padding:32px 24px">
+          <div style="font-size:48px;margin-bottom:16px">💯</div>
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:8px">품질 보증</h3>
+          <p style="color:var(--color-text-muted);font-size:14px;line-height:1.7">상품에 문제가 있으면 100% 재발송 또는 환불해드립니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+    Footer
+  ========================================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__brand-name">🍇 포도농장</div>
+          <p class="footer__desc">
+            충청남도 논산에서 15년째 포도를 재배하고 있는<br />
+            가족 농장입니다. 최고 품질의 포도를 직접 배송합니다.
+          </p>
+        </div>
+        <div class="footer__info">
+          <div>📍 충청남도 논산시 연무읍 포도농장로 1</div>
+          <div>📞 041-123-4567</div>
+          <div>✉️ farm@grape.example.com</div>
+          <div>🕐 평일 09:00 – 18:00 (주말·공휴일 휴무)</div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © 2026 포도농장. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+    Cart Drawer  [data-component="CartDrawer"]
+  ========================================================= -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" data-component="CartDrawer">
+    <div class="cart-drawer__header">
+      <h2 class="cart-drawer__title">🛒 장바구니</h2>
+      <button class="btn btn--ghost btn--sm" id="cart-close-btn">닫기 ✕</button>
+    </div>
+    <div class="cart-drawer__body" id="cart-body">
+      <!-- JS 렌더링 -->
+    </div>
+    <div class="cart-drawer__footer">
+      <div class="cart-total">
+        <span class="cart-total__label">합계</span>
+        <span class="cart-total__amount" id="cart-total-amount">0원</span>
+      </div>
+      <button class="btn btn--primary btn--full btn--lg" id="cart-checkout-btn" disabled>
+        주문하기
+      </button>
+    </div>
+  </aside>
+
+  <script src="../scripts/app.js"></script>
+</body>
+</html>

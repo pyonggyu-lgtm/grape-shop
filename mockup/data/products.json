@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "_id": "prod_001",
+      "name": "샤인머스캣",
+      "variety": "샤인머스캣",
+      "description": "껍질째 먹는 고당도 청포도. 당도 18Brix 이상, 씨 없는 고급 품종입니다. 농장 직송으로 신선도를 보장합니다.",
+      "options": [
+        { "weight": 2, "price": 28000, "label": "2kg" },
+        { "weight": 4, "price": 52000, "label": "4kg" }
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1632153013793-b04b2cec74cc?w=600&auto=format&fit=crop",
+      "stock": 120,
+      "isAvailable": true
+    },
+    {
+      "_id": "prod_002",
+      "name": "거봉",
+      "variety": "거봉",
+      "description": "대알 흑포도의 대명사. 진한 단맛과 풍부한 과즙이 특징이며, 껍질이 두껍고 씨가 있는 전통 품종입니다.",
+      "options": [
+        { "weight": 2, "price": 18000, "label": "2kg" },
+        { "weight": 4, "price": 34000, "label": "4kg" }
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1523848309072-c199db53f137?w=600&auto=format&fit=crop",
+      "stock": 80,
+      "isAvailable": true
+    },
+    {
+      "_id": "prod_003",
+      "name": "캠벨얼리",
+      "variety": "캠벨얼리",
+      "description": "국내에서 가장 친숙한 포도. 새콤달콤한 맛과 향이 강하며 포도주스나 잼으로도 활용도가 높습니다.",
+      "options": [
+        { "weight": 2, "price": 12000, "label": "2kg" },
+        { "weight": 4, "price": 22000, "label": "4kg" }
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1599819574720-07e70b0b29dd?w=600&auto=format&fit=crop",
+      "stock": 200,
+      "isAvailable": true
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 10,
+    "total": 3
+  }
+}

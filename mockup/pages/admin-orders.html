@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>주문 관리 | 포도농장 관리자</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body data-page="admin-orders">
+
+  <div class="admin-layout">
+
+    <!-- ======================================================
+      Sidebar
+    ======================================================= -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__logo">🍇 포도농장 관리</div>
+      <nav>
+        <a class="admin-nav__item is-active" href="admin-orders.html">
+          📋 주문 관리
+        </a>
+        <a class="admin-nav__item" href="admin-products.html">
+          🍇 상품 관리
+        </a>
+        <a class="admin-nav__item" href="admin-login.html" style="margin-top:auto">
+          🚪 로그아웃
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ======================================================
+      Main Content
+    ======================================================= -->
+    <main class="admin-main">
+
+      <div class="admin-header">
+        <h1 class="admin-title">주문 관리</h1>
+        <div style="display:flex;gap:12px;align-items:center">
+          <span style="font-size:14px;color:var(--color-text-muted)">2026년 6월 22일</span>
+          <button class="btn btn--outline btn--sm" onclick="renderAdminOrders()">🔄 새로고침</button>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="admin-stats">
+        <div class="stat-card">
+          <div class="stat-card__label">오늘 주문</div>
+          <div class="stat-card__value" style="color:var(--color-primary)">2</div>
+          <div class="stat-card__change">↑ 전일 대비 +1</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__label">결제 완료</div>
+          <div class="stat-card__value" style="color:var(--color-success)">1</div>
+          <div class="stat-card__change" style="color:var(--color-text-muted)">처리 대기</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__label">포장 중</div>
+          <div class="stat-card__value" style="color:var(--color-info)">1</div>
+          <div class="stat-card__change" style="color:var(--color-text-muted)">발송 준비 완료</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__label">오늘 매출</div>
+          <div class="stat-card__value">102,000원</div>
+          <div class="stat-card__change">↑ 전일 대비 +38%</div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+        <select class="form-input" style="width:auto;height:40px;font-size:14px">
+          <option>전체 상태</option>
+          <option>결제 완료</option>
+          <option>포장 중</option>
+          <option>발송 완료</option>
+          <option>배송 완료</option>
+          <option>취소됨</option>
+        </select>
+        <input type="text" class="form-input" style="width:240px;height:40px;font-size:14px" placeholder="주문번호 / 고객명 검색" />
+        <input type="date" class="form-input" style="width:160px;height:40px;font-size:14px" />
+      </div>
+
+      <!-- Order Table  [data-component="AdminOrderTable"] -->
+      <div class="admin-table-wrapper" data-component="AdminOrderTable">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>주문번호</th>
+              <th>주문자</th>
+              <th>상품</th>
+              <th>결제금액</th>
+              <th>상태</th>
+              <th>액션</th>
+            </tr>
+          </thead>
+          <tbody id="admin-order-tbody">
+            <tr>
+              <td colspan="6" style="text-align:center;padding:32px;color:var(--color-text-muted)">
+                주문을 불러오는 중...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:24px">
+        <button class="btn btn--ghost btn--sm">‹ 이전</button>
+        <span style="font-size:14px;padding:0 12px">
+          <strong>1</strong> / 1
+        </span>
+        <button class="btn btn--ghost btn--sm">다음 ›</button>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../scripts/app.js"></script>
+</body>
+</html>
