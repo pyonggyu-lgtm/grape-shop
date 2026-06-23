@@ -31,6 +31,8 @@ export interface Order extends BaseDocument {
   postalCode: string;
   requestedDeliveryDate?: string;
   deliveryNote?: string;
+  recipientName?: string;
+  recipientPhone?: string;
   items: OrderItem[];
   totalAmount: number;
   paymentMethod: 'card' | 'kakaopay' | 'tosspay';

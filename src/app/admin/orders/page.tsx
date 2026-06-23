@@ -20,7 +20,7 @@ export default function AdminOrdersPage() {
       <header className='bg-white border-b px-6 h-16 flex items-center justify-between'>
         <div className='flex items-center gap-2'>
           <span className='text-xl'>🍇</span>
-          <span className='font-bold text-purple-700'>관리자 — 주문 관리</span>
+          <span className='font-bold text-purple-700'>그레이스 팜 — 주문 관리</span>
         </div>
       </header>
 
@@ -81,9 +81,12 @@ export default function AdminOrdersPage() {
                     </div>
                   </div>
 
-                  <div className='mt-3 text-xs text-gray-400 bg-gray-50 rounded-xl px-4 py-2'>
-                    📦 {order.deliveryAddress} {order.deliveryDetailAddress}
-                    {order.deliveryNote && ` · "${order.deliveryNote}"`}
+                  <div className='mt-3 text-xs text-gray-400 bg-gray-50 rounded-xl px-4 py-2 space-y-0.5'>
+                    {order.recipientName && order.recipientName !== order.customerName && (
+                      <p>🎁 받는 분: {order.recipientName} · {order.recipientPhone}</p>
+                    )}
+                    <p>📦 {order.deliveryAddress} {order.deliveryDetailAddress}</p>
+                    {order.deliveryNote && <p>💬 "{order.deliveryNote}"</p>}
                   </div>
                 </div>
               )

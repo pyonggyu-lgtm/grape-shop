@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useProducts } from '@/hooks/useProducts'
 import { ProductCard } from '@/components/features/product/ProductCard'
 import { CartDrawer } from '@/components/features/cart/CartDrawer'
@@ -8,8 +8,11 @@ import { useCartStore } from '@/stores/cart-store'
 
 export default function HomePage() {
   const [cartOpen, setCartOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const { data: products, isLoading, error } = useProducts()
   const totalCount = useCartStore((s) => s.totalCount)
+
+  useEffect(() => setMounted(true), [])
 
   return (
     <div className='min-h-screen bg-[#faf9f7]'>
@@ -17,14 +20,14 @@ export default function HomePage() {
         <div className='max-w-5xl mx-auto px-4 h-16 flex items-center justify-between'>
           <div className='flex items-center gap-2'>
             <span className='text-2xl'>🍇</span>
-            <span className='font-bold text-purple-700 text-lg'>포도농장 직거래</span>
+            <span className='font-bold text-purple-700 text-lg'>그레이스 팜</span>
           </div>
           <button
             onClick={() => setCartOpen(true)}
             className='relative flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors'
           >
             <span>장바구니</span>
-            {totalCount() > 0 && (
+            {mounted && totalCount() > 0 && (
               <span className='bg-yellow-400 text-gray-900 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center'>
                 {totalCount()}
               </span>
@@ -70,7 +73,7 @@ export default function HomePage() {
         )}
 
         {products && products.length > 0 && (
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+          <div className={`grid gap-6 ${products.length === 1 ? 'grid-cols-1 max-w-sm mx-auto' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}>
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -79,7 +82,7 @@ export default function HomePage() {
       </main>
 
       <footer className='border-t border-gray-200 bg-white py-8 px-4 text-center text-sm text-gray-400 mt-auto'>
-        <p>포도농장 직거래 · 문의: 010-0000-0000</p>
+        <p>그레이스 팜 · 문의: 010-0000-0000</p>
         <p className='mt-1'>신선한 포도를 합리적인 가격에 만나보세요</p>
       </footer>
 

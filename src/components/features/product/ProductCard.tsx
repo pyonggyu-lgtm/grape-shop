@@ -31,8 +31,12 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div className='bg-white rounded-2xl shadow-md overflow-hidden flex flex-col'>
-      <div className='aspect-[4/3] bg-purple-50 flex items-center justify-center text-6xl'>
-        🍇
+      <div className='aspect-[4/3] bg-purple-50 flex items-center justify-center overflow-hidden'>
+        {product.imageUrl ? (
+          <img src={product.imageUrl} alt={product.name} className='w-full h-full object-cover' />
+        ) : (
+          <span className='text-6xl'>🍇</span>
+        )}
       </div>
       <div className='p-5 flex flex-col gap-3 flex-1'>
         <div>

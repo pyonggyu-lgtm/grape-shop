@@ -38,7 +38,10 @@ export default function OrderPage() {
     deliveryDetailAddress: '',
     requestedDeliveryDate: '',
     deliveryNote: '',
+    recipientName: '',
+    recipientPhone: '',
   })
+  const [isGift, setIsGift] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
 
   useEffect(() => {
@@ -79,6 +82,8 @@ export default function OrderPage() {
     try {
       const order = await createOrder.mutateAsync({
         ...form,
+        recipientName: isGift ? form.recipientName : form.customerName,
+        recipientPhone: isGift ? form.recipientPhone : form.customerPhone,
         items,
         totalAmount: totalAmount(),
         paymentMethod: 'card',
@@ -142,7 +147,37 @@ export default function OrderPage() {
               />
               {errors.customerPhone && <p className='text-xs text-red-500 mt-1'>{errors.customerPhone}</p>}
             </div>
-            {field('이메일', 'customerEmail', 'email', 'example@email.com', true)}
+          </section>
+
+          {/* 선물 옵션 */}
+          <section className='bg-white rounded-2xl p-6 shadow-sm'>
+            <label className='flex items-center gap-3 cursor-pointer'>
+              <input
+                type='checkbox'
+                checked={isGift}
+                onChange={(e) => setIsGift(e.target.checked)}
+                className='w-5 h-5 accent-purple-600'
+              />
+              <div>
+                <p className='font-medium text-gray-900'>다른 분께 선물하기</p>
+                <p className='text-xs text-gray-400 mt-0.5'>받는 분이 주문자와 다른 경우 체크해주세요</p>
+              </div>
+            </label>
+            {isGift && (
+              <div className='mt-4 space-y-4 border-t pt-4'>
+                {field('받는 분 이름', 'recipientName', 'text', '홍길동')}
+                <div>
+                  <label className='block text-sm font-medium text-gray-700 mb-1'>받는 분 연락처</label>
+                  <input
+                    type='tel'
+                    value={form.recipientPhone}
+                    onChange={(e) => setForm((f) => ({ ...f, recipientPhone: formatPhone(e.target.value) }))}
+                    placeholder='010-0000-0000'
+                    className='w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-purple-400'
+                  />
+                </div>
+              </div>
+            )}
           </section>
 
           {/* 배송지 */}
@@ -180,7 +215,6 @@ export default function OrderPage() {
               )}
             </div>
             {field('상세주소', 'deliveryDetailAddress', 'text', '101호', true)}
-            {field('배송 희망일', 'requestedDeliveryDate', 'date', '', true)}
             <div>
               <label className='block text-sm font-medium text-gray-700 mb-1'>
                 배송 메모 <span className='text-gray-400 font-normal'>(선택)</span>
