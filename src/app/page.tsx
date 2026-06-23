@@ -22,7 +22,7 @@ export default function HomePage() {
             <span className='text-2xl'>🍇</span>
             <div className='flex items-baseline gap-1.5'>
               <span className='font-bold text-lg bg-gradient-to-r from-green-800 to-emerald-700 bg-clip-text text-transparent'>그레이스 팜</span>
-              <span className='text-xs text-gray-400'>(010-9100-2244)</span>
+              <span className='text-xs text-gray-500'>📞 010-9100-2244</span>
             </div>
           </div>
           <button
