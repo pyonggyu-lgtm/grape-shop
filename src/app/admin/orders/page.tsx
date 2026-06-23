@@ -1,10 +1,33 @@
 'use client'
 
+import * as XLSX from 'xlsx'
 import { useOrders, useUpdateOrderStatus } from '@/hooks/useOrder'
 import { formatPrice, formatDate, ORDER_STATUS_LABEL, ORDER_STATUS_COLOR } from '@/lib/utils'
-import type { OrderStatus } from '@/types'
+import type { Order, OrderStatus } from '@/types'
 
 const STATUS_FLOW: OrderStatus[] = ['pending', 'paid', 'preparing', 'shipped', 'delivered']
+
+function exportToExcel(orders: Order[]) {
+  const rows = orders.flatMap((order) => {
+    const recipientName = order.recipientName || order.customerName
+    const recipientPhone = order.recipientPhone || order.customerPhone
+    const totalQty = order.items.reduce((sum, i) => sum + i.quantity, 0)
+    const fullAddress = [order.deliveryAddress, order.deliveryDetailAddress].filter(Boolean).join(' ')
+    return [{
+      '수하인이름': recipientName,
+      '수하인주소': fullAddress,
+      '수하인연락처': recipientPhone,
+      '수량': totalQty,
+      '송하인이름': '그레이스팜',
+      '송하인연락처': order.customerPhone,
+      '송하인주소': '경북 김천시 봉산면 284-1',
+    }]
+  })
+  const ws = XLSX.utils.json_to_sheet(rows)
+  const wb = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(wb, ws, '주문목록')
+  XLSX.writeFile(wb, `로젠택배_${new Date().toISOString().slice(0, 10)}.xlsx`)
+}
 
 export default function AdminOrdersPage() {
   const { data: orders, isLoading } = useOrders()
@@ -22,6 +45,15 @@ export default function AdminOrdersPage() {
           <span className='text-xl'>🍇</span>
           <span className='font-bold text-purple-700'>그레이스 팜 — 주문 관리</span>
         </div>
+        {orders && orders.length > 0 && (
+          <button
+            onClick={() => exportToExcel(orders)}
+            className='flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors'
+          >
+            <span>📦</span>
+            <span>로젠택배 엑셀 다운로드</span>
+          </button>
+        )}
       </header>
 
       <main className='max-w-5xl mx-auto px-4 py-8'>

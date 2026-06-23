@@ -80,6 +80,15 @@ export default function HomePage() {
         )}
       </main>
 
+      <section className='max-w-5xl mx-auto px-4 py-8'>
+        <div className='bg-green-50 border border-green-200 rounded-2xl p-6 text-center'>
+          <p className='text-base font-bold text-green-800 mb-2'>💳 입금 계좌 안내</p>
+          <p className='text-2xl font-bold text-green-900 tracking-wide'>우체국 010017-02-618695</p>
+          <p className='text-gray-500 mt-1'>예금주: 박용규</p>
+          <p className='text-xs text-gray-400 mt-3'>주문 후 위 계좌로 입금해 주시면 확인 후 발송해 드립니다.</p>
+        </div>
+      </section>
+
       <footer className='border-t border-gray-200 bg-white py-8 px-4 text-center text-sm text-gray-400 mt-auto'>
         <p>그레이스 팜 · 문의: 010-0000-0000</p>
         <p className='mt-1'>신선한 포도를 합리적인 가격에 만나보세요</p>
