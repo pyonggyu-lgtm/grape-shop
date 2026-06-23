@@ -40,10 +40,7 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
       <div className='p-5 flex flex-col gap-3 flex-1'>
         <div>
-          <span className='text-xs text-purple-600 font-medium bg-purple-50 px-2 py-0.5 rounded-full'>
-            {product.variety}
-          </span>
-          <h3 className='mt-2 text-lg font-bold text-gray-900'>{product.name}</h3>
+          <h3 className='text-lg font-bold text-gray-900'>{product.name}</h3>
           <p className='mt-1 text-sm text-gray-500 line-clamp-2'>{product.description}</p>
         </div>
 

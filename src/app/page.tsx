@@ -84,7 +84,7 @@ export default function HomePage() {
       </main>
 
       <footer className='bg-green-50 border-t border-green-200 mt-auto'>
-        <div className='max-w-5xl mx-auto px-4 py-8 text-center'>
+        <div className='max-w-5xl mx-auto px-4 pt-6 pb-2 text-center'>
           <p className='text-xs text-green-700 font-semibold uppercase tracking-widest mb-1'>💳 입금 계좌</p>
           <p className='text-lg font-bold text-green-900'>우체국 010017-02-618695 <span className='text-sm font-normal text-gray-500'>(예금주: 박용규)</span></p>
         </div>
