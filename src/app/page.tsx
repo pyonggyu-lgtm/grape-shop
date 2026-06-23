@@ -42,7 +42,7 @@ export default function HomePage() {
       <section className='bg-gradient-to-br from-purple-700 to-purple-500 text-white py-16 px-4 text-center'>
         <h1 className='text-3xl font-bold mb-3'>산지 직송 포도</h1>
         <p className='text-purple-100 text-lg whitespace-nowrap'>
-          농장에서 바로 수확한 신선한 포도를 빠르게 배송해 드립니다
+          농장에서 바로 수확한 신선한 포도를 빠르고 합리적인 가격으로 배송해 드립니다
         </p>
         <div className='mt-6 flex flex-wrap justify-center gap-3 text-sm font-medium'>
           <span className='bg-yellow-400 text-yellow-900 px-4 py-1.5 rounded-full'>✓ 당일 수확 배송</span>
