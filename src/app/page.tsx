@@ -20,7 +20,10 @@ export default function HomePage() {
         <div className='max-w-5xl mx-auto px-4 h-16 flex items-center justify-between'>
           <div className='flex items-center gap-2'>
             <span className='text-2xl'>🍇</span>
-            <span className='font-bold text-lg bg-gradient-to-r from-green-800 to-emerald-700 bg-clip-text text-transparent'>그레이스 팜</span>
+            <div className='flex items-baseline gap-1.5'>
+              <span className='font-bold text-lg bg-gradient-to-r from-green-800 to-emerald-700 bg-clip-text text-transparent'>그레이스 팜</span>
+              <span className='text-xs text-gray-400'>(010-9100-2244)</span>
+            </div>
           </div>
           <button
             onClick={() => setCartOpen(true)}
@@ -81,18 +84,10 @@ export default function HomePage() {
       </main>
 
       <footer className='bg-green-50 border-t border-green-200 mt-auto'>
-        <div className='max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 text-center'>
-          <div>
-            <p className='text-xs text-green-700 font-semibold uppercase tracking-widest mb-1'>💳 입금 계좌</p>
-            <p className='text-lg font-bold text-green-900'>우체국 010017-02-618695</p>
-            <p className='text-sm text-gray-500 mt-0.5'>예금주: 박용규</p>
-          </div>
-          <div className='hidden sm:block w-px h-12 bg-green-200' />
-          <div>
-            <p className='text-xs text-green-700 font-semibold uppercase tracking-widest mb-1'>📞 문의</p>
-            <p className='text-lg font-bold text-green-900'>010-9100-2244</p>
-            <p className='text-sm text-gray-500 mt-0.5'>그레이스 팜</p>
-          </div>
+        <div className='max-w-5xl mx-auto px-4 py-8 text-center'>
+          <p className='text-xs text-green-700 font-semibold uppercase tracking-widest mb-1'>💳 입금 계좌</p>
+          <p className='text-lg font-bold text-green-900'>우체국 010017-02-618695</p>
+          <p className='text-sm text-gray-500 mt-0.5'>예금주: 박용규</p>
         </div>
         <p className='text-center text-xs text-gray-400 pb-4'>주문 후 위 계좌로 입금해 주시면 확인 후 발송해 드립니다.</p>
       </footer>
