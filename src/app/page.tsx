@@ -37,7 +37,9 @@ export default function HomePage() {
       </header>
 
       <section className='bg-gradient-to-br from-purple-700 to-purple-500 text-white py-16 px-4 text-center'>
-        <div className='text-5xl mb-4'>🍇</div>
+        <div className='w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white/30'>
+          <img src='/shine-muscat.jpg' alt='샤인머스캣' className='w-full h-full object-cover' />
+        </div>
         <h1 className='text-3xl font-bold mb-3'>산지 직송 포도</h1>
         <p className='text-purple-100 text-lg max-w-md mx-auto'>
           농장에서 바로 수확한 신선한 포도를 빠르게 배송해 드립니다
