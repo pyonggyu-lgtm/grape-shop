@@ -80,18 +80,21 @@ export default function HomePage() {
         )}
       </main>
 
-      <section className='max-w-5xl mx-auto px-4 py-8'>
-        <div className='bg-green-50 border border-green-200 rounded-2xl p-6 text-center'>
-          <p className='text-base font-bold text-green-800 mb-2'>💳 입금 계좌 안내</p>
-          <p className='text-2xl font-bold text-green-900 tracking-wide'>우체국 010017-02-618695</p>
-          <p className='text-gray-500 mt-1'>예금주: 박용규</p>
-          <p className='text-xs text-gray-400 mt-3'>주문 후 위 계좌로 입금해 주시면 확인 후 발송해 드립니다.</p>
-          <p className='text-sm text-green-700 font-medium mt-3'>📞 문의: 010-9100-2244</p>
+      <footer className='bg-green-50 border-t border-green-200 mt-auto'>
+        <div className='max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 text-center'>
+          <div>
+            <p className='text-xs text-green-700 font-semibold uppercase tracking-widest mb-1'>💳 입금 계좌</p>
+            <p className='text-lg font-bold text-green-900'>우체국 010017-02-618695</p>
+            <p className='text-sm text-gray-500 mt-0.5'>예금주: 박용규</p>
+          </div>
+          <div className='hidden sm:block w-px h-12 bg-green-200' />
+          <div>
+            <p className='text-xs text-green-700 font-semibold uppercase tracking-widest mb-1'>📞 문의</p>
+            <p className='text-lg font-bold text-green-900'>010-9100-2244</p>
+            <p className='text-sm text-gray-500 mt-0.5'>그레이스 팜</p>
+          </div>
         </div>
-      </section>
-
-      <footer className='border-t border-gray-200 bg-white py-4 px-4 text-center text-sm text-gray-400 mt-auto'>
-        <p>그레이스 팜</p>
+        <p className='text-center text-xs text-gray-400 pb-4'>주문 후 위 계좌로 입금해 주시면 확인 후 발송해 드립니다.</p>
       </footer>
 
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
