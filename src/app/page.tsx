@@ -20,7 +20,7 @@ export default function HomePage() {
         <div className='max-w-5xl mx-auto px-4 h-16 flex items-center justify-between'>
           <div className='flex items-center gap-2'>
             <span className='text-2xl'>🍇</span>
-            <span className='font-bold text-purple-700 text-lg'>그레이스 팜</span>
+            <span className='font-bold text-lg bg-gradient-to-r from-green-800 to-emerald-700 bg-clip-text text-transparent'>그레이스 팜</span>
           </div>
           <button
             onClick={() => setCartOpen(true)}
@@ -37,17 +37,14 @@ export default function HomePage() {
       </header>
 
       <section className='bg-gradient-to-br from-purple-700 to-purple-500 text-white py-16 px-4 text-center'>
-        <div className='w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white/30'>
-          <img src='/shine-muscat.jpg' alt='샤인머스캣' className='w-full h-full object-cover' />
-        </div>
         <h1 className='text-3xl font-bold mb-3'>산지 직송 포도</h1>
-        <p className='text-purple-100 text-lg max-w-md mx-auto'>
+        <p className='text-purple-100 text-lg whitespace-nowrap'>
           농장에서 바로 수확한 신선한 포도를 빠르게 배송해 드립니다
         </p>
-        <div className='mt-6 flex flex-wrap justify-center gap-4 text-sm text-purple-100'>
-          <span>✓ 당일 수확 배송</span>
-          <span>✓ 산지 직거래 가격</span>
-          <span>✓ 안전한 포장</span>
+        <div className='mt-6 flex flex-wrap justify-center gap-3 text-sm font-medium'>
+          <span className='bg-yellow-400 text-yellow-900 px-4 py-1.5 rounded-full'>✓ 당일 수확 배송</span>
+          <span className='bg-green-400 text-green-900 px-4 py-1.5 rounded-full'>✓ 산지 직거래 가격</span>
+          <span className='bg-blue-300 text-blue-900 px-4 py-1.5 rounded-full'>✓ 안전한 포장</span>
         </div>
       </section>
 

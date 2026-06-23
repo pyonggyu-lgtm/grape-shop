@@ -159,7 +159,7 @@ export default function OrderPage() {
                 className='w-5 h-5 accent-purple-600'
               />
               <div>
-                <p className='font-medium text-gray-900'>다른 분께 선물하기</p>
+                <p className='font-medium bg-gradient-to-r from-green-800 to-emerald-700 bg-clip-text text-transparent'>다른 분께 선물하기</p>
                 <p className='text-xs text-gray-400 mt-0.5'>받는 분이 주문자와 다른 경우 체크해주세요</p>
               </div>
             </label>

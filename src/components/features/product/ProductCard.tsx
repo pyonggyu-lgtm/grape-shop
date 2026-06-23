@@ -31,7 +31,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div className='bg-white rounded-2xl shadow-md overflow-hidden flex flex-col'>
-      <div className='aspect-[4/3] bg-purple-50 flex items-center justify-center overflow-hidden'>
+      <div className='aspect-square bg-purple-50 flex items-center justify-center overflow-hidden'>
         {product.imageUrl ? (
           <img src={product.imageUrl} alt={product.name} className='w-full h-full object-cover' />
         ) : (
