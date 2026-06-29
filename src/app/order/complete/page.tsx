@@ -35,12 +35,9 @@ function CompleteContent() {
         >
           쇼핑 계속하기
         </button>
-        <button
-          onClick={() => window.close()}
-          className='w-full text-sm text-gray-400 hover:text-gray-600 py-2 transition-colors'
-        >
-          창 닫기
-        </button>
+        <p className='text-xs text-gray-400 text-center'>
+          주문이 완료됐습니다. 탭을 닫으셔도 됩니다.
+        </p>
       </div>
     </div>
   )
