@@ -41,7 +41,7 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className='p-5 flex flex-col gap-3 flex-1'>
         <div>
           <h3 className='text-lg font-bold text-gray-900'>{product.name}</h3>
-          <p className='mt-1 text-sm text-gray-500 line-clamp-1'>{product.description}</p>
+          <p className='mt-1 text-xs text-gray-500 line-clamp-1'>{product.description}</p>
         </div>
 
         <div className='flex flex-wrap gap-2'>
