@@ -12,8 +12,9 @@ const STATUS_FLOW: OrderStatus[] = ['pending', 'paid', 'preparing', 'shipped', '
 
 function exportToExcel(orders: Order[]) {
   const rows = orders.flatMap((order) => {
-    const recipientName = order.recipientName || order.customerName
-    const recipientPhone = order.recipientPhone || order.customerPhone
+    const isGift = !!order.recipientName && order.recipientName !== order.customerName
+    const recipientName = isGift ? order.recipientName! : order.customerName
+    const recipientPhone = isGift ? (order.recipientPhone || order.customerPhone) : order.customerPhone
     const totalQty = order.items.reduce((sum, i) => sum + i.quantity, 0)
     const fullAddress = [order.deliveryAddress, order.deliveryDetailAddress].filter(Boolean).join(' ')
     return [{
@@ -21,9 +22,9 @@ function exportToExcel(orders: Order[]) {
       '수하인주소': fullAddress,
       '수하인연락처': recipientPhone,
       '수량': totalQty,
-      '송하인이름': '그레이스팜',
+      '송하인이름': isGift ? '그레이스팜' : order.customerName,
       '송하인연락처': order.customerPhone,
-      '송하인주소': '경북 김천시 봉산면 284-1',
+      '송하인주소': isGift ? '경북 김천시 봉산면 284-1' : '',
     }]
   })
   const ws = XLSX.utils.json_to_sheet(rows)
