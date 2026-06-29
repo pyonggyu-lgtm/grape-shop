@@ -58,12 +58,17 @@ export default function AdminOrdersPage() {
           <p className='font-medium'>⚠️ 카카오톡 브라우저에서는 엑셀 다운로드가 안 됩니다.</p>
           <button
             onClick={() => {
-              navigator.clipboard.writeText(window.location.href)
-              alert('주소가 복사됐습니다.\nChrome을 열고 주소창에 붙여넣기 해주세요.')
+              const url = window.location.href
+              const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent)
+              if (isIOS) {
+                window.location.href = 'googlechrome://' + url.replace('https://', '')
+              } else {
+                window.location.href = `intent://${url.replace('https://', '')}#Intent;scheme=https;package=com.android.chrome;end`
+              }
             }}
-            className='bg-yellow-900 text-yellow-100 px-4 py-1.5 rounded-full text-xs font-bold'
+            className='bg-yellow-900 text-yellow-100 px-5 py-2 rounded-full text-sm font-bold'
           >
-            📋 주소 복사 → Chrome에 붙여넣기
+            🌐 Chrome으로 열기
           </button>
         </div>
       )}
