@@ -10,7 +10,7 @@ export default function HomePage() {
   const [cartOpen, setCartOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const { data: products, isLoading, error } = useProducts()
-  const totalCount = useCartStore((s) => s.totalCount)
+  const totalCount = useCartStore((s) => s.items.reduce((n, i) => n + i.quantity, 0))
 
   useEffect(() => setMounted(true), [])
 
@@ -30,9 +30,9 @@ export default function HomePage() {
             className='relative flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors whitespace-nowrap'
           >
             <span>장바구니</span>
-            {mounted && totalCount() > 0 && (
+            {mounted && totalCount > 0 && (
               <span className='bg-yellow-400 text-gray-900 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center'>
-                {totalCount()}
+                {totalCount}
               </span>
             )}
           </button>
