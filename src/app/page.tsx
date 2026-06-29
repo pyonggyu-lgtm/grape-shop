@@ -91,15 +91,10 @@ export default function HomePage() {
           <p className='text-sm text-gray-500'>예금주: 박용규</p>
         </div>
         <p className='text-center text-xs text-gray-400 pb-3'>주문 후 위 계좌로 입금해 주시면 확인 후 발송해 드립니다.</p>
-        <div className='text-center pb-2'>
-          <a href='tel:010-9100-2244' className='inline-flex items-center gap-1.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-colors'>
-            📞 문의 전화하기
-          </a>
-          <p className='text-xs text-gray-400 mt-1.5'>010-9100-2244</p>
+        <div className='flex justify-center items-center gap-4 pb-4 text-xs text-gray-400'>
+          <a href='tel:010-9100-2244' className='hover:text-purple-600 transition-colors'>📞 010-9100-2244</a>
+          <a href='/admin' className='hover:text-purple-600 transition-colors'>🔧 관리자</a>
         </div>
-        <p className='text-center pb-4 pt-2'>
-          <a href='/admin' className='text-xs text-gray-400 hover:text-purple-600 transition-colors'>🔧 관리자</a>
-        </p>
       </footer>
 
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
