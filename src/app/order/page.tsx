@@ -86,7 +86,7 @@ export default function OrderPage() {
         recipientPhone: isGift ? form.recipientPhone : form.customerPhone,
         items,
         totalAmount: totalAmount(),
-        paymentMethod: 'card',
+        paymentMethod: 'transfer',
         status: 'pending',
       } as Parameters<typeof createOrder.mutateAsync>[0])
 
@@ -242,10 +242,18 @@ export default function OrderPage() {
                 </div>
               ))}
               <div className='border-t pt-3 flex justify-between font-bold'>
-                <span>총 결제금액</span>
+                <span>합계</span>
                 <span className='text-purple-700 text-lg'>{formatPrice(totalAmount())}</span>
               </div>
             </div>
+          </section>
+
+          {/* 입금 계좌 안내 */}
+          <section className='bg-green-50 border-2 border-green-200 rounded-2xl p-6 text-center'>
+            <p className='text-sm font-semibold text-green-700 mb-2'>💳 주문 후 아래 계좌로 입금해 주세요</p>
+            <p className='text-lg font-bold text-green-900'>우체국 010017-02-618695</p>
+            <p className='text-sm text-gray-500 mt-1'>예금주: 박용규</p>
+            <p className='text-xs text-gray-400 mt-2'>입금 확인 후 발송해 드립니다</p>
           </section>
 
           <button
@@ -253,7 +261,7 @@ export default function OrderPage() {
             disabled={createOrder.isPending}
             className='w-full bg-purple-600 hover:bg-purple-700 disabled:bg-gray-300 text-white py-4 rounded-2xl font-bold text-base transition-colors'
           >
-            {createOrder.isPending ? '처리 중...' : `${formatPrice(totalAmount())} 결제하기`}
+            {createOrder.isPending ? '처리 중...' : '주문 완료하기'}
           </button>
         </form>
       </div>

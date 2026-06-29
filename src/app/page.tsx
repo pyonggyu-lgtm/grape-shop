@@ -90,7 +90,7 @@ export default function HomePage() {
         </div>
         <p className='text-center text-xs text-gray-400 pb-3'>주문 후 위 계좌로 입금해 주시면 확인 후 발송해 드립니다.</p>
         <p className='text-center pb-4'>
-          <a href='/admin' className='text-xs text-gray-300 hover:text-gray-500 transition-colors'>관리자</a>
+          <a href='/admin' className='text-xs text-gray-400 hover:text-purple-600 transition-colors'>🔧 관리자</a>
         </p>
       </footer>
 

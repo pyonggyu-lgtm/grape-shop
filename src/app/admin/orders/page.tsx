@@ -41,9 +41,18 @@ export default function AdminOrdersPage() {
   return (
     <div className='min-h-screen bg-[#faf9f7]'>
       <header className='bg-white border-b px-6 h-16 flex items-center justify-between'>
-        <div className='flex items-center gap-2'>
-          <span className='text-xl'>🍇</span>
-          <span className='font-bold text-purple-700'>그레이스 팜 — 주문 관리</span>
+        <div className='flex items-center gap-3'>
+          <a
+            href='/'
+            className='flex items-center gap-1 text-sm text-gray-500 hover:text-purple-600 transition-colors'
+          >
+            ← 고객 화면
+          </a>
+          <span className='text-gray-300'>|</span>
+          <div className='flex items-center gap-2'>
+            <span className='text-xl'>🍇</span>
+            <span className='font-bold text-purple-700'>그레이스 팜 — 주문 관리</span>
+          </div>
         </div>
         {orders && orders.length > 0 && (
           <button
