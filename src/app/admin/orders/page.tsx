@@ -22,9 +22,9 @@ function exportToExcel(orders: Order[]) {
       '수하인주소': fullAddress,
       '수하인연락처': recipientPhone,
       '수량': totalQty,
-      '송하인이름': isGift ? '그레이스팜' : order.customerName,
+      '송하인이름': isGift ? order.customerName : '그레이스팜',
       '송하인연락처': order.customerPhone,
-      '송하인주소': isGift ? '경북 김천시 봉산면 284-1' : '',
+      '송하인주소': isGift ? '' : '경북 김천시 봉산면 284-1',
     }]
   })
   const ws = XLSX.utils.json_to_sheet(rows)
