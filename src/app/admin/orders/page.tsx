@@ -54,8 +54,17 @@ export default function AdminOrdersPage() {
   return (
     <div className='min-h-screen bg-[#faf9f7]'>
       {isKakao && (
-        <div className='bg-yellow-400 text-yellow-900 text-sm text-center py-2 px-4 font-medium'>
-          ⚠️ 카카오톡 브라우저에서는 엑셀 다운로드가 안 됩니다. Chrome으로 열어주세요.
+        <div className='bg-yellow-400 text-yellow-900 text-sm text-center py-3 px-4 space-y-2'>
+          <p className='font-medium'>⚠️ 카카오톡 브라우저에서는 엑셀 다운로드가 안 됩니다.</p>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href)
+              alert('주소가 복사됐습니다.\nChrome을 열고 주소창에 붙여넣기 해주세요.')
+            }}
+            className='bg-yellow-900 text-yellow-100 px-4 py-1.5 rounded-full text-xs font-bold'
+          >
+            📋 주소 복사 → Chrome에 붙여넣기
+          </button>
         </div>
       )}
       <header className='bg-white border-b px-6 h-16 flex items-center justify-between'>
