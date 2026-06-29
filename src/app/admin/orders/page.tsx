@@ -1,6 +1,9 @@
 'use client'
 
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import * as XLSX from 'xlsx'
+import { supabase } from '@/lib/supabase'
 import { useOrders, useUpdateOrderStatus } from '@/hooks/useOrder'
 import { formatPrice, formatDate, ORDER_STATUS_LABEL, ORDER_STATUS_COLOR } from '@/lib/utils'
 import type { Order, OrderStatus } from '@/types'
@@ -30,8 +33,15 @@ function exportToExcel(orders: Order[]) {
 }
 
 export default function AdminOrdersPage() {
+  const router = useRouter()
   const { data: orders, isLoading } = useOrders()
   const updateStatus = useUpdateOrderStatus()
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      if (!data.session) router.replace('/admin')
+    })
+  }, [router])
 
   function nextStatus(current: OrderStatus): OrderStatus | null {
     const idx = STATUS_FLOW.indexOf(current)

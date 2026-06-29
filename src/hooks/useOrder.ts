@@ -4,7 +4,7 @@ import type { Order, OrderStatus } from '@/types'
 
 function generateOrderNumber(): string {
   const date = new Date().toISOString().slice(0, 10).replace(/-/g, '')
-  const seq = String(Math.floor(Math.random() * 9999) + 1).padStart(4, '0')
+  const seq = (Date.now() % 9000 + 1000).toString()
   return `ORD-${date}-${seq}`
 }
 
