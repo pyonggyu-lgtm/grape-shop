@@ -35,6 +35,12 @@ function CompleteContent() {
         >
           쇼핑 계속하기
         </button>
+        <button
+          onClick={() => window.close()}
+          className='w-full text-sm text-gray-400 hover:text-gray-600 py-2 transition-colors'
+        >
+          창 닫기
+        </button>
       </div>
     </div>
   )
