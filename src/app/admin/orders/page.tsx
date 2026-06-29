@@ -72,27 +72,23 @@ export default function AdminOrdersPage() {
           </button>
         </div>
       )}
-      <header className='bg-white border-b px-6 h-16 flex items-center justify-between'>
-        <div className='flex items-center gap-3'>
-          <a
-            href='/'
-            className='flex items-center gap-1 text-sm text-gray-500 hover:text-purple-600 transition-colors'
-          >
-            ← 고객 화면
-          </a>
+      <header className='bg-white border-b px-4 h-16 flex items-center justify-between gap-2'>
+        <div className='flex items-center gap-2 min-w-0'>
+          <a href='/' className='text-sm text-gray-500 hover:text-purple-600 whitespace-nowrap'>← 고객</a>
           <span className='text-gray-300'>|</span>
-          <div className='flex items-center gap-2'>
-            <span className='text-xl'>🍇</span>
-            <span className='font-bold text-purple-700'>그레이스 팜 — 주문 관리</span>
+          <div className='flex items-center gap-1 min-w-0'>
+            <span className='text-lg'>🍇</span>
+            <span className='font-bold text-purple-700 text-sm whitespace-nowrap'>주문 관리</span>
           </div>
         </div>
         {orders && orders.length > 0 && (
           <button
             onClick={() => exportToExcel(orders)}
-            className='flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors'
+            className='flex items-center gap-1.5 bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-xl text-xs font-medium transition-colors whitespace-nowrap shrink-0'
           >
             <span>📦</span>
-            <span>로젠택배 엑셀 다운로드</span>
+            <span className='hidden sm:inline'>로젠택배</span>
+            <span>엑셀</span>
           </button>
         )}
       </header>
