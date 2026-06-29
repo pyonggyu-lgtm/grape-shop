@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import * as XLSX from 'xlsx'
 import { supabase } from '@/lib/supabase'
@@ -37,11 +37,13 @@ export default function AdminOrdersPage() {
   const router = useRouter()
   const { data: orders, isLoading } = useOrders()
   const updateStatus = useUpdateOrderStatus()
+  const [isKakao, setIsKakao] = useState(false)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
       if (!data.session) router.replace('/admin')
     })
+    setIsKakao(/KAKAOTALK/i.test(navigator.userAgent))
   }, [router])
 
   function nextStatus(current: OrderStatus): OrderStatus | null {
@@ -51,6 +53,11 @@ export default function AdminOrdersPage() {
 
   return (
     <div className='min-h-screen bg-[#faf9f7]'>
+      {isKakao && (
+        <div className='bg-yellow-400 text-yellow-900 text-sm text-center py-2 px-4 font-medium'>
+          ⚠️ 카카오톡 브라우저에서는 엑셀 다운로드가 안 됩니다. Chrome으로 열어주세요.
+        </div>
+      )}
       <header className='bg-white border-b px-6 h-16 flex items-center justify-between'>
         <div className='flex items-center gap-3'>
           <a
