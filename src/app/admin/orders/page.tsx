@@ -121,7 +121,7 @@ export default function AdminOrdersPage() {
                         {order.customerName} · {order.customerPhone}
                       </p>
                     </div>
-                    <div className='flex items-center gap-3'>
+                    <div className='flex items-center gap-2 flex-wrap justify-end'>
                       <span className={`text-xs font-medium px-3 py-1 rounded-full ${ORDER_STATUS_COLOR[order.status]}`}>
                         {ORDER_STATUS_LABEL[order.status]}
                       </span>
@@ -132,6 +132,19 @@ export default function AdminOrdersPage() {
                           className='text-xs bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded-full transition-colors'
                         >
                           {ORDER_STATUS_LABEL[next]}으로 변경
+                        </button>
+                      )}
+                      {order.status !== 'cancelled' && (
+                        <button
+                          onClick={() => {
+                            if (confirm(`${order.orderNumber} 주문을 취소하시겠습니까?`)) {
+                              updateStatus.mutate({ id: order.id, status: 'cancelled' })
+                            }
+                          }}
+                          disabled={updateStatus.isPending}
+                          className='text-xs bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1 rounded-full transition-colors'
+                        >
+                          취소
                         </button>
                       )}
                     </div>
@@ -162,6 +175,26 @@ export default function AdminOrdersPage() {
             })}
           </div>
         )}
+
+        {orders && orders.length > 0 && (() => {
+          const active = orders.filter((o) => o.status !== 'cancelled')
+          const totalAmount = active.reduce((sum, o) => sum + o.totalAmount, 0)
+          return (
+            <div className='mt-6 bg-white rounded-2xl shadow-sm px-6 py-4 flex flex-wrap items-center justify-between gap-3'>
+              <div className='flex items-center gap-4 text-sm text-gray-600'>
+                <span>전체 <strong className='text-gray-900'>{orders.length}건</strong></span>
+                {orders.length !== active.length && (
+                  <span className='text-red-500'>취소 <strong>{orders.length - active.length}건</strong></span>
+                )}
+                <span>유효 <strong className='text-purple-700'>{active.length}건</strong></span>
+              </div>
+              <div className='text-sm font-bold text-gray-900'>
+                합계 <span className='text-purple-700 text-base'>{totalAmount.toLocaleString()}원</span>
+                <span className='text-xs font-normal text-gray-400 ml-1'>(취소 제외)</span>
+              </div>
+            </div>
+          )
+        })()}
       </main>
     </div>
   )
