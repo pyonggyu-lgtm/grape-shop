@@ -8,12 +8,12 @@ import { useOrders, useUpdateOrderStatus } from '@/hooks/useOrder'
 import { formatPrice, formatDate, ORDER_STATUS_LABEL, ORDER_STATUS_COLOR } from '@/lib/utils'
 import type { Order, OrderStatus } from '@/types'
 
-const STATUS_FLOW: OrderStatus[] = ['pending', 'paid', 'preparing', 'shipped', 'delivered']
+const STATUS_FLOW: OrderStatus[] = ['pending', 'paid', 'shipped']
 
 function exportToExcel(orders: Order[]) {
-  const exportable = orders.filter((o) => o.status === 'paid' || o.status === 'preparing')
+  const exportable = orders.filter((o) => o.status === 'paid')
   if (exportable.length === 0) {
-    alert('발송 대상 주문이 없습니다.\n(입금 확인 또는 포장 중 상태인 주문만 포함됩니다)')
+    alert('결제 완료 상태인 주문이 없습니다.')
     return
   }
   const rows = exportable.flatMap((order) => {
