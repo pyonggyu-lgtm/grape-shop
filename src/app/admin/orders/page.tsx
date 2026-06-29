@@ -11,7 +11,12 @@ import type { Order, OrderStatus } from '@/types'
 const STATUS_FLOW: OrderStatus[] = ['pending', 'paid', 'preparing', 'shipped', 'delivered']
 
 function exportToExcel(orders: Order[]) {
-  const rows = orders.flatMap((order) => {
+  const exportable = orders.filter((o) => o.status === 'paid' || o.status === 'preparing')
+  if (exportable.length === 0) {
+    alert('발송 대상 주문이 없습니다.\n(입금 확인 또는 포장 중 상태인 주문만 포함됩니다)')
+    return
+  }
+  const rows = exportable.flatMap((order) => {
     const isGift = !!order.recipientName && order.recipientName !== order.customerName
     const recipientName = isGift ? order.recipientName! : order.customerName
     const recipientPhone = isGift ? (order.recipientPhone || order.customerPhone) : order.customerPhone
