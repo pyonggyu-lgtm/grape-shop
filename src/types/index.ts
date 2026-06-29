@@ -35,7 +35,7 @@ export interface Order extends BaseDocument {
   recipientPhone?: string;
   items: OrderItem[];
   totalAmount: number;
-  paymentMethod: 'card' | 'kakaopay' | 'tosspay';
+  paymentMethod: 'card' | 'kakaopay' | 'tosspay' | 'transfer';
   paymentKey?: string;
   status: OrderStatus;
 }
