@@ -22,12 +22,12 @@ export default function HomePage() {
             <span className='text-2xl'>🍇</span>
             <div className='flex items-baseline gap-1.5'>
               <span className='font-bold text-lg bg-gradient-to-r from-green-800 to-emerald-700 bg-clip-text text-transparent'>그레이스 팜</span>
-              <span className='text-xs text-gray-700'>(문의:010-9100-2244)</span>
+              <span className='hidden sm:inline text-xs text-gray-700'>(문의:010-9100-2244)</span>
             </div>
           </div>
           <button
             onClick={() => setCartOpen(true)}
-            className='relative flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors'
+            className='relative flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors whitespace-nowrap'
           >
             <span>장바구니</span>
             {mounted && totalCount() > 0 && (
@@ -45,7 +45,7 @@ export default function HomePage() {
           당일 수확한 신선한 포도를 빠르고 합리적인 가격으로 배송해 드립니다
         </p>
         <div className='mt-6 flex flex-wrap justify-center gap-3 text-sm font-medium'>
-          <span className='bg-yellow-400 text-yellow-900 px-4 py-1.5 rounded-full'>✓ 당일 수확 배송</span>
+          <span className='hidden sm:inline bg-yellow-400 text-yellow-900 px-4 py-1.5 rounded-full'>✓ 당일 수확 배송</span>
           <span className='bg-green-400 text-green-900 px-4 py-1.5 rounded-full'>✓ 산지 직거래 가격</span>
           <span className='bg-blue-300 text-blue-900 px-4 py-1.5 rounded-full'>✓ 안전한 포장</span>
         </div>
@@ -86,7 +86,8 @@ export default function HomePage() {
       <footer className='bg-green-50 border-t border-green-200 mt-auto'>
         <div className='max-w-5xl mx-auto px-4 pt-6 pb-2 text-center'>
           <p className='text-xs text-green-700 font-semibold uppercase tracking-widest mb-1'>💳 입금 계좌</p>
-          <p className='text-lg font-bold text-green-900'>우체국 010017-02-618695 <span className='text-sm font-normal text-gray-500'>(예금주: 박용규)</span></p>
+          <p className='text-lg font-bold text-green-900'>우체국 010017-02-618695</p>
+          <p className='text-sm text-gray-500'>예금주: 박용규</p>
         </div>
         <p className='text-center text-xs text-gray-400 pb-3'>주문 후 위 계좌로 입금해 주시면 확인 후 발송해 드립니다.</p>
         <p className='text-center pb-4'>
