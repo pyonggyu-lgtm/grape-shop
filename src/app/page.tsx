@@ -92,7 +92,9 @@ export default function HomePage() {
         </div>
         <p className='text-center text-xs text-gray-400 pb-3'>주문 후 위 계좌로 입금해 주시면 확인 후 발송해 드립니다.</p>
         <div className='flex justify-center items-center gap-4 pb-4 text-xs text-gray-400'>
-          <a href='tel:010-9100-2244' className='text-red-500 hover:text-red-600 transition-colors'>📞 문의 전화하기</a>
+          <a href='tel:010-9100-2244' className='transition-colors'>
+            <span className='text-red-500'>문의전화 : </span><span className='text-gray-400'>010-9100-2244</span>
+          </a>
           <a href='/admin' className='hover:text-purple-600 transition-colors'>🔧 관리자</a>
         </div>
       </footer>
